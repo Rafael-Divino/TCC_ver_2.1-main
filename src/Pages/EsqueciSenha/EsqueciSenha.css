@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Glory&family=Mulish:wght@600&family=Poppins:ital,wght@0,200;0,300;1,400&family=Roboto&family=Rubik:wght@300;400&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Glory;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .esquecisenha-body {
+    display: flex;
+    padding: 0;
+  }
+  
+  .esquecisenha-img {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .esquecisenha-img img {
+    height: 45.1rem;
+    width: 42rem;
+    padding: 0;
+  }
+  .esquecisenha-form-all {
+    margin-top: 5%;
+    margin-left: -3%;
+  }
+  
+  .esquecisenha-title {
+    color: #000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    font-style: normal;
+    white-space: nowrap; /* Prevent text from wrapping */
+    margin-left: 33%;
+  }
+  
+  .esquecisenha-form {
+    display: flex; /* Add this line to create a flex container */
+    align-items: center;
+    margin-top: 5%;
+    margin-left: 30%;
+  }
+  .esquecisenha-form input {
+    width: 40rem;
+    height: 5rem;
+    fill: #fff;
+    border: solid #f9c200;
+  }
+  .esquecisenha-buttom-entrar {
+    width: 29rem;
+    height: 5rem;
+    flex-shrink: 0;
+    margin-top: 2rem;
+    margin-left: 30%;
+    background-color: #f9c200;
+    text-decoration: none;
+    stroke: #6b7280;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))
+      drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    display: flex; /* Add this to use flexbox */
+    justify-content: center; /* Horizontally center content */
+    align-items: center; /* Vertically center content */
+  }
+  
+  .esquecisenha-buttom-entrar a {
+    text-decoration: none;
+    color: #fff;
+    text-align: center;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    font-variant: small-caps;
+    letter-spacing: 0.44px;
+    font-family: Arial;
+  }
+  
+  .linhas-css {
+    border-top: 2px solid #000; /* Cor e espessura da linha */
+    margin-top: 80px; /* Espaçamento superior (opcional) */
+    width: 80%; /* Largura total */
+    margin-left: 27%;
+  }
+  
+  .esquecisenha-buttom-voltar {
+    width: 35rem;
+    height: 5rem;
+    flex-shrink: 0;
+    margin-top: 3rem;
+    background-color: #f9c200;
+    text-decoration: none;
+    stroke: #6b7280;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))
+      drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    display: flex; /* Add this to use flexbox */
+    justify-content: center; /* Horizontally center content */
+    align-items: center;
+    margin-left: 24%;
+  }
+  .esquecisenha-buttom-voltar a {
+    text-decoration: none;
+    color: #fff;
+    text-align: center;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    font-variant: small-caps;
+    letter-spacing: 0.44px;
+    font-family: Arial;
+  }
+  

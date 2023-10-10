@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@600&family=Poppins:ital,wght@0,200;0,300;1,400&family=Roboto&family=Rubik:wght@300;400&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.sobrenos {
+  margin-bottom: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 70rem;
+}
+
+.sobrenos-body {
+  height: 15rem;
+  width: 20rem;
+  border-radius: 10px;
+  background: #f9c200;
+  margin: 5% auto;
+  margin-left: 5%;
+  margin-top: 10%;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.sobrenos-nav-all {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1.5rem;
+  font-family: Mulish;
+
+
+}
+
+.sobrenos-nav1,
+.sobrenos-nav2 {
+  width: 15rem;
+  height: 4rem;
+  border-radius: 30px;
+  background: #fff;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.sobrenos-nav1 a,
+.sobrenos-nav2 a {
+  color: #000;
+  font-size: 30px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.sobrenos-img1 {
+  margin-left: 22rem;
+}
+
+.sobrenos-img1 img {
+  width: 50rem;
+  height: 15rem;
+  border-radius: 10px;
+  margin-top: -11.5rem;
+}
+
+
+
+
+
+.sobrenos-title {
+  color: #fdf8f8;
+  border-radius: 10px;
+  background: #f9c200;
+  margin-left: 22rem;
+  width: 50rem;
+  height: 7rem;
+  margin-top: 1rem;
+}
+
+.sobrenos-title h1 {
+  color: #fdf8f8;
+  font-size: 50px;
+  line-height: normal;
+  margin: 0;
+  font-family: Rubik;
+
+}
+
+
+.propaganda {
+
+  margin-top: 2;
+  /* Redefina a margem superior para 0 */
+  float: left;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 5%;
+}
+
+.propaganda img {
+  width: 18rem;
+  height: 22rem;
+  display: flex;
+
+}
+
+.sobrenos-text1 {
+  height: 50rem;
+  width: 50rem;
+  text-align: justify;
+  margin-left: 22rem;
+  font-family: Rubik;
+  line-height: 2.8rem;
+  float: left;
+  display: flex;
+  margin-top: -20rem;
+}
+
+
+.sobrenos-text1 p {
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.sobrenos-img2 {
+  margin-left: 45rem;
+  margin-top: -24rem;
+
+}
+
+.sobrenos-img2 img {
+  width: 27rem;
+  height: 20rem;
+  border-radius: 10px;
+}
+
+.sobrenos-text2 {
+  height: 60rem;
+  width: 20rem;
+  text-align: justify;
+  margin-left: 22rem;
+  margin-top: 15%;
+  font-family: Rubik;
+  line-height: 2.8rem;
+
+}
+
+.sobrenos-text2 p {
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.sobrenos-text3 {
+  font-size: 24px;
+  font-family: Rubik;
+  line-height: 2.8rem;
+  height: 80rem;
+  width: 25rem;
+  margin-left: 46rem;
+  margin-top: 25%;
+  line-height: 2.8rem;
+  text-align: justify;
+  margin-bottom: 5rem;
+
+
+}
+
+.sobrenos-text3 p {
+  font-style: normal;
+  font-weight: 400;
+}
+
+
+.sobrenos-img3 {
+  width: 27rem;
+  margin-top: -18rem;
+
+
+}
+
+.sobrenos-img3 img {
+  width: 20rem;
+  height: 16rem;
+  border-radius: 10px;
+  margin-left: 22rem;
+  margin-bottom: 5rem;
+
+}

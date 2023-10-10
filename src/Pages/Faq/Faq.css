@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;1,400&family=Roboto&family=Rubik:wght@300;400&display=swap");
+
+
+.fac-body {
+  margin-bottom: 30%;
+
+
+}
+
+.faq-title {
+  display: flex;
+  white-space: nowrap;
+  font-family: arial;
+  margin-left: 30rem;
+  margin-top: 10rem;
+
+
+}
+
+.wrapper {
+  display: flex;
+  height: 40rem;
+  width: 20rem;
+
+}
+
+.accordion {
+  width: 20rem;
+  margin-top: 80%;
+  margin-left: -30rem;
+}
+
+.item {
+  background: #fdf8f8;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: #f9c200;
+  margin-top: 2rem;
+  padding: 1rem 1rem;
+  font-size: 80%;
+  font-family: arial;
+  line-height: 1.8;
+  width: 40rem;
+
+}
+
+.title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.content {
+  font-size: 1rem;
+  font-family: arial;
+  line-height: 1.8;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0, 1, 0, 1);
+}
+
+.content.show {
+  font-size: 1rem;
+  font-family: arial;
+  line-height: 1.8;
+  height: auto;
+  max-height: 9999px;
+  transition: all 0.5s cubic-bezier(1, 0, 1, 0);
+}

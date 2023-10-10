@@ -1,0 +1,131 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Glory&family=Mulish:wght@600&family=Poppins:ital,wght@0,200;0,300;1,400&family=Roboto&family=Rubik:wght@300;400&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Glory;
+}
+.body-alterar-perfil {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-family: Glory;
+  
+  
+  }
+  
+  .alterar-perfil-container {
+    margin-top: 10%;
+    background-color: #FDF8F8;
+    height: 65rem;
+    width: 80%;
+    display: flex;
+  
+  }
+
+
+.title-alterar-perfil{
+    width: 55%;
+    height: 8%;
+    font-size: 20px;
+    background-color: #F9C200;
+    margin-left: 22%;
+    margin-top: 5%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    /* Centraliza horizontalmente */
+    align-items: center;
+    /* Centraliza verticalmente */
+  }
+  /* Keep the first title (title-alterar-senha h1) unchanged */
+.title-alterar-perfil h1 {
+  margin: 0;
+  font-family: Rubik;
+  white-space: nowrap;
+  text-align: center;
+  color: #FDF8F8;
+}
+
+/* Style the container for the titles */
+.title-container {
+  position: relative; /* Add relative positioning to the container */
+  margin-left: 22%;
+  margin-top: 5%; /* Adjust the top margin for the container */
+}
+
+/* Style the second title (preferencias h1) using absolute positioning */
+.preferencias h1 {
+  margin: 0;
+  font-family: Rubik;
+  white-space: nowrap;
+  text-align: center;
+  background-color: #F9C200;
+  color: #FDF8F8;
+  position: absolute;
+  top: 50%;
+  left: 35%;
+  width: 30%;
+  height: 3rem;
+  border-radius: 20px;
+  display: flex; /* Use flexbox for vertical centering */
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+}
+
+.alterar-perfil-form {
+margin-top: 25%;
+margin-left: -51%;
+}
+.alterar-perfil-form input {
+  margin-top: 1%;
+  margin-bottom: 5%;
+  padding: 10px; /* Add padding for better spacing */
+  border-radius: 5px; /* Add rounded corners */
+  fill: #FFF;
+  stroke-width: 5px;
+  border: 3px solid #F9C200;
+  display: block;
+  margin-left: 10%;
+}
+
+.alterar-perfil-form  input {
+  width: 30rem;
+  height: 3rem;
+  font-size: 1.5rem;
+}
+.img-editar-usuario{
+  margin-top: 65%;
+  margin-left: -34%;
+}
+
+
+.bnt-alterar-perfil button {
+  background-color: #F9C200;
+  color: white;
+  margin-bottom: 5%;
+  width: 18rem;
+  height: 5rem;
+  text-align: center;
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  border: none;
+  line-height: 28px;
+  margin-top: 55rem;
+  margin-left: -25rem;
+  font-variant: small-caps;
+  letter-spacing: 0.44px;
+  box-shadow: 0px 2px 2px 0px rgba(116, 116, 116, 1);
+  transition: background-color 0.3s ease; /* Add a transition for smooth color change */
+
+}
+
+.bnt-alterar-perfil button:hover {
+  background-color: #FFD700; /* Change the background color on hover */
+}

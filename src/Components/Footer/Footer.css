@@ -1,0 +1,156 @@
+.box {
+  height: 20rem;
+  width: 100%;
+  margin-top: 10%;
+  display: flex;
+}
+
+.box .footer-logado {
+  height: 20rem;
+  width: 100%;
+  margin-top: 10%;
+
+}
+
+.box .overlap-group {
+  height: 20rem;
+  width: 100%;
+  position: relative;
+}
+
+.box .rectangle {
+  background-color: #f8c100;
+  position: absolute;
+  height: 22rem;
+  width: 100%;
+}
+
+/*coluna 1*/
+
+.box .group {
+
+  left: 6rem;
+  position: absolute;
+  top: 4rem;
+  height: 18rem;
+  width: 35%;
+}
+
+.box .grouptitle1 {
+  color: #5a3232;
+  font-family: "Glory-Bold", Helvetica;
+  font-size: 28px;
+  font-weight: 700;
+  left: 0.5rem;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 5%;
+
+}
+
+.box .grouplink1 {
+  color: #5a3232;
+  font-family: "Glory-Bold", Helvetica;
+  font-size: 20px;
+  font-weight: 700;
+  left: 0.5rem;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 20%;
+  margin-top: 1rem;
+
+}
+
+.box .grouplink2 {
+  color: #5a3232;
+  font-family: "Glory-Bold", Helvetica;
+  font-size: 20px;
+  font-weight: 700;
+  left: 0.5rem;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 35%;
+  margin-top: 1rem;
+}
+
+.box .grouplink3 {
+  color: #5a3232;
+  font-family: "Glory-Bold", Helvetica;
+  font-size: 20px;
+  font-weight: 700;
+  left: 0.5rem;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 50%;
+  margin-top: 1rem;
+}
+
+/*coluna 2*/
+
+
+.box .group2 {
+  left: 65rem;
+  position: absolute;
+  top: 2.5rem;
+  height: 15rem;
+  width: 25%;
+}
+
+.box .grouptitle2 {
+  color: #5a3232;
+  font-family: "Glory-Bold", Helvetica;
+  font-size: 28px;
+  font-weight: 700;
+  left: 0.5rem;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 2.5rem;
+
+}
+
+.box .icon1 {
+  height: 5rem;
+  width: 5rem;
+  position: absolute;
+  left: 0.5rem;
+  position: absolute;
+  top: 40%;
+}
+
+.box .icon2 {
+  height: 5rem;
+  width: 5rem;
+  position: absolute;
+  left: 5rem;
+  position: absolute;
+  top: 40%;
+}
+
+.box .icon3 {
+  height: 5rem;
+  width: 5rem;
+  position: absolute;
+  left: 10rem;
+  position: absolute;
+  top: 40%;
+}
+
+
+.box .grouptitle4 {
+  position: absolute;
+  height: 1rem;
+  width: 1%;
+  /* Ajuste o valor conforme necessário */
+  font-size: 20px;
+  color: #5a3232;
+  margin-left: 40%;
+  white-space: nowrap;
+  margin-top: -2%;
+  font-weight: 600;
+
+}

@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&family=Rubik:wght@300;400&display=swap');
+
+
+.NavbarItems {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    width: 100%;
+    height: 80px;
+    background-color: #F9C200;
+    box-shadow: 0 2px 2px #c1c1c1;
+    position: fixed;
+    transform: translate(-500);
+    z-index: 9999;
+    font-family: "Rubik";
+
+}
+
+.Navbar-logo {
+    color: black;
+    font-size: 2.0rem;
+    cursor: pointer;
+    margin-left: 5%;
+}
+
+.Nav-menu {
+    display: grid;
+    grid-template-columns: repeat(8, auto);
+    grid-gap: 10px;
+    list-style: none;
+    align-items: center;
+    z-index: -1;
+    margin-right: 10%;
+
+}
+
+
+
+.nav_links {
+    text-decoration: none;
+    color: black;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 0.7rem 1rem;
+    white-space: nowrap;
+}
+
+.nav_links:hover {
+    color: rgb(255, 255, 255);
+    transition: all 0.2 ease-in-out;
+}
+
+.nav_links_cadastro {
+    display: none;
+    color: aliceblue;
+
+}
+
+.button-navbar {
+    padding: 0.5rem 1rem;
+    white-space: nowrap;
+    border-radius: 1.0rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    background-color: #000000;
+    color: aliceblue;
+    transition: all 0.2 ease-in-out;
+    font-size: 1.3rem;
+    font-family: "Rubik";
+
+
+}
+
+.button-navbar:hover {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+
+}
+
+.menu_icons {
+    display: none;
+
+}
+
+.nav_links_login {
+    display: block;
+    width: 100%;
+    font-size: 1.3rem;
+    padding: 2rem;
+    text-decoration: none;
+    list-style: none;
+    color: #000000;
+}
+
+.nav_links_login i {
+    padding-right: 10px;
+    text-decoration: none;
+    list-style: none;
+}
+
+.nav_links_login:hover {
+    transition: none;
+    color: #ffffff;
+
+}
+
+@media screen and (max-width: 850px) {
+    .NavbarItems {
+        z-index: 99;
+    }
+
+    .Nav-menu {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        background: #ffffff;
+        width: 100%;
+        height: auto;
+        position: absolute;
+        top: 0;
+        left: -100%;
+        opacity: 0;
+        align-items: stretch;
+        padding: 80px 0 30px 0;
+        margin: 0;
+        transition: 0.s ease-in-out;
+
+    }
+
+
+    .Nav-menu.active {
+        left: 0;
+        opacity: 1;
+        z-index: -1;
+        transition: 0.s ease-in-out;
+
+
+    }
+
+    .nav_links {
+        display: block;
+        width: 100%;
+        font-size: 1.2rem;
+        padding: 2rem;
+    }
+
+    .nav_links i {
+        padding-right: 10px;
+    }
+
+    .nav_links:hover {
+        transition: none;
+        color: #ffffff;
+        background-color: #F9C200;
+    }
+
+    .nav_links_login {
+        display: block;
+        width: 100%;
+        font-size: 1.3rem;
+        padding: 2rem;
+        text-decoration: none;
+        list-style: none;
+    }
+
+    .nav_links_login i {
+        padding-right: 10px;
+        text-decoration: none;
+        list-style: none;
+    }
+
+    .nav_links_login:hover {
+        transition: none;
+        color: #ffffff;
+        background-color: #F9C200;
+
+    }
+
+
+
+    button {
+        display: none;
+
+    }
+
+    .nav_links_cadastro {
+        display: block;
+        text-align: center;
+        padding: 1.5rem;
+        margin: auto;
+        border-radius: 4px;
+        width: 80%;
+        background: #000000;
+        text-decoration: none;
+        color: #ffffff;
+        font-size: 1.2rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+
+    }
+
+    .menu_icons {
+        display: block;
+        cursor: pointer;
+
+    }
+
+    .menu_icons i {
+        font-size: 2.2rem;
+        color: rgb(0, 0, 0);
+
+    }
+}
