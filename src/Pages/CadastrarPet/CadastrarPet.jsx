@@ -94,7 +94,7 @@ const CadastroAnimal = () => {
 
             if (Object.keys(validationErrors).length === 0) {
                 try {
-                    const response = await axios.post('https://localhost:44302/api/PetFeliz/CadastrarPet', body);
+                    const response = await axios.post('https://petfeliz.azurewebsites.net/api/PetFeliz/CadastrarPet', body);
 
                     if (response.status === 200) {
                         alert('Cadastro realizado com sucesso');
