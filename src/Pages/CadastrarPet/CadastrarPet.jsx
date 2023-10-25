@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import './CadastroAnimal.css';
 import axios from 'axios';
+import DateTimePicker from 'react-datetime-picker';
+import Datetime from 'react-datetime';
 
 const CadastroAnimal = () => {
-    const [Pet, setPet] = useState({
+    /*const [Pet, setPet] = useState({
         Nome_Pet: '',
         Sexo_Pet: 'Selecione o Sexo',
         Descricao_Pet: '',
@@ -12,30 +14,56 @@ const CadastroAnimal = () => {
         Status_Pet: 'Selecione uma opção',
         Castrado: 'Selecione a opção',
         Nome_Foto: '',
+        Foto_Pet: '',
         Base64: null,
-        Especie: {
-            Nome_Especie: '',
-        },
-        Raca: {
-            Nome_Raca: '',
-        },
-        Animal: {
-            Nome_Animal: '',
-        },
+    });*/
+
+    const [Nome_Pet, setNome_Pet] = useState("");
+    const [Porte_Pet, setPorte_Pet] = useState("");
+    const [Sexo_Pet, setSexo_Pet] = useState("");
+    const [Idade_Pet, setIdade_Pet] = useState("");
+    const [Descricao_Pet, setDescricao_Pet] = useState("");
+    const [Status_Pet, setStatus_Pet] = useState("");
+    const [Castrado, setCastrado] = useState("");
+    const [Nome_Foto, setNome_Foto] = useState("");
+    const [Foto_Pet, setFoto_Pet] = useState("");
+    const [Base64, setBase64] = useState(null);
+
+    const [Especie, setEspecie] = useState({
+        Nome_Especie: '',
+    })
+
+    const [Raca, setRaca] = useState({
+        Nome_Raca: '',
+    });
+
+    const [Animal, setAnimal] = useState({
+        Nome_Animal: '',
+    });
+
+    const [Vacina, setVacina] = useState({
+        data_vacina: '',
+        status: 'Selecione a opção',
+        descricao: '',
     });
 
     const [errors, setErrors] = useState({});
 
-    const Idade_Pet = ['Entre 0 e 1', 'Entre 1 e 4', 'Entre 4 e 10', 'Mais de 10'];
-    const Porte_Pet = ['Pequeno Porte', 'Médio Porte', 'Grande Porte'];
-    const Sexo_Pet = ['M', 'F'];
-    const Castrado = ['Sim', 'Não'];
-    const Status_Pet = ['Disponivel'];
+    const idade_Pet = ['Entre 0 e 1', 'Entre 1 e 4', 'Entre 4 e 10', 'Mais de 10'];
+    const porte_Pet = ['Pequeno Porte', 'Médio Porte', 'Grande Porte'];
+    const sexo_Pet = ['M', 'F'];
+    const castrado = ['Sim', 'Não'];
+    const status_Pet = ['Disponivel'];
+    const status = ['Valido', 'Vencido'];
 
     const validateForm = async () => {
         return {};
     };
 
+    function handleDateChange(date) {
+        setVacina({ ...Vacina, data_vacina: date });
+    }
+    
     function handleFileChange(event) {
         const selectedFile = event.target.files[0];
 
@@ -43,11 +71,13 @@ const CadastroAnimal = () => {
             const reader = new FileReader();
             reader.onload = function (e) {
                 const base64 = e.target.result.split(',')[1];
-                setPet({ ...Pet, Base64: base64 });
+                setBase64(base64);
+
             };
+            debugger;
             reader.readAsDataURL(selectedFile);
         } else {
-            setPet({ ...Pet, Base64: null });
+            setBase64(null);
         }
     }
 
@@ -56,10 +86,15 @@ const CadastroAnimal = () => {
         const validationErrors = await validateForm();
         setErrors(validationErrors);
 
-        if (Pet.Base64) {
+        if (Base64) {
+
+            const body = {
+                Vacina, Animal, Raca, Especie, Nome_Pet, Porte_Pet, Sexo_Pet, Idade_Pet, Descricao_Pet, Status_Pet, Castrado, Nome_Foto, Foto_Pet, Base64
+            }
+
             if (Object.keys(validationErrors).length === 0) {
                 try {
-                    const response = await axios.post('https://localhost:44302/api/PetFeliz/CadastrarPet', Pet);
+                    const response = await axios.post('https://localhost:44302/api/PetFeliz/CadastrarPet', body);
 
                     if (response.status === 200) {
                         alert('Cadastro realizado com sucesso');
@@ -80,8 +115,8 @@ const CadastroAnimal = () => {
                 type="text"
                 placeholder="Nome do animal"
                 className="input"
-                onChange={(e) => setPet({ ...Pet, Nome_Pet: e.target.value })}
-                value={Pet.Nome_Pet}
+                onChange={(e) => setNome_Pet( e.target.value )}
+                value={Nome_Pet}
             />
             {errors.Nome_Pet && <p className="labelError">{errors.Nome_Pet}</p>}
 
@@ -89,8 +124,8 @@ const CadastroAnimal = () => {
                 type="text"
                 placeholder="Especie do animal"
                 className="input"
-                onChange={(e) => setPet({ ...Pet, Especie: { Nome_Especie: e.target.value } })}
-                value={Pet.Especie.Nome_Especie}
+                onChange={(e) => setEspecie({ ...Especie, Nome_Especie: e.target.value })}
+                value={Especie.Nome_Especie}
             />
             {errors.Nome_Pet && <p className="labelError">{errors.Nome_Pet}</p>}
 
@@ -98,8 +133,8 @@ const CadastroAnimal = () => {
                 type="text"
                 placeholder="Raça"
                 className="input"
-                onChange={(e) => setPet({ ...Pet, Raca: { Nome_Raca: e.target.value } })}
-                value={Pet.Raca.Nome_Raca}
+                onChange={(e) => setRaca({ ...Raca, Nome_Raca: e.target.value })}
+                value={Raca.Nome_Raca}
             />
             {errors.Nome_Raca && <p className="labelError">{errors.Nome_Raca}</p>}
 
@@ -107,18 +142,18 @@ const CadastroAnimal = () => {
                 type="text"
                 placeholder="Tipo"
                 className="input"
-                onChange={(e) => setPet({ ...Pet, Animal: { Nome_Animal: e.target.value } })}
-                value={Pet.Animal.Nome_Animal}
+                onChange={(e) => setAnimal({ ...Animal, Nome_Animal: e.target.value })}
+                value={Animal.Nome_Animal}
             />
             {errors.Nome_Animal && <p className="labelError">{errors.Nome_Animal}</p>}
 
             <select
-                value={Pet.Idade_Pet}
-                onChange={(e) => setPet({ ...Pet, Idade_Pet: e.target.value })}
+                value={Idade_Pet}
+                onChange={(e) => setIdade_Pet(e.target.value)}
                 className="dropdown"
             >
                 <option value="Selecione a Idade">Idade</option>
-                {Idade_Pet.map((option) => (
+                {idade_Pet.map((option) => (
                     <option value={option} key={option}>
                         {option}
                     </option>
@@ -126,12 +161,12 @@ const CadastroAnimal = () => {
             </select>
 
             <select
-                value={Pet.Porte_Pet}
-                onChange={(e) => setPet({ ...Pet, Porte_Pet: e.target.value })}
+                value={Porte_Pet}
+                onChange={(e) => setPorte_Pet(e.target.value)}
                 className="dropdown"
             >
                 <option value="Selecione o Porte">Porte</option>
-                {Porte_Pet.map((option) => (
+                {porte_Pet.map((option) => (
                     <option value={option} key={option}>
                         {option}
                     </option>
@@ -139,12 +174,12 @@ const CadastroAnimal = () => {
             </select>
 
             <select
-                value={Pet.Castrado}
-                onChange={(e) => setPet({ ...Pet, Castrado: e.target.value })}
+                value={Castrado}
+                onChange={(e) => setCastrado(e.target.value)}
                 className="dropdown"
             >
                 <option value="Selecione a opção">Animal Castrado?</option>
-                {Castrado.map((option) => (
+                {castrado.map((option) => (
                     <option value={option} key={option}>
                         {option}
                     </option>
@@ -152,12 +187,12 @@ const CadastroAnimal = () => {
             </select>
 
             <select
-                value={Pet.Sexo_Pet}
-                onChange={(e) => setPet({ ...Pet, Sexo_Pet: e.target.value })}
+                value={Sexo_Pet}
+                onChange={(e) => setSexo_Pet(e.target.value )}
                 className="dropdown"
             >
                 <option value="Selecione o Sexo">Sexo do animal?</option>
-                {Sexo_Pet.map((option) => (
+                {sexo_Pet.map((option) => (
                     <option value={option} key={option}>
                         {option}
                     </option>
@@ -165,12 +200,25 @@ const CadastroAnimal = () => {
             </select>
 
             <select
-                value={Pet.Status_Pet}
-                onChange={(e) => setPet({ ...Pet, Status_Pet: e.target.value })}
+                value={Status_Pet}
+                onChange={(e) => setStatus_Pet(e.target.value)}
                 className="dropdown"
             >
                 <option value="Selecione uma opção">Status?</option>
-                {Status_Pet.map((option) => (
+                {status_Pet.map((option) => (
+                    <option value={option} key={option}>
+                        {option}
+                    </option>
+                ))}
+            </select>
+
+            <select
+                value={Vacina.status}
+                onChange={(e) => setVacina({ ...Vacina, status: e.target.value })}
+                className="dropdown"
+            >
+                <option value="Selecione uma opção">Valido?</option>
+                {status.map((option) => (
                     <option value={option} key={option}>
                         {option}
                     </option>
@@ -178,16 +226,34 @@ const CadastroAnimal = () => {
             </select>
 
             <input
+                onChange={(e) => setVacina({ ...Vacina, data_vacina: e.target.value })}
+                value={Vacina.data_vacina}
+                type="text"
+                className="dropdown"
+                placeholder='Data Vacina'
+            >
+
+            </input>
+
+            <input
+                type="text"
+                placeholder="Descrição das vacinas"
+                className="input"
+                onChange={(e) => setVacina({ ...Vacina, descricao: e.target.value })}
+                value={Vacina.descricao}
+            />
+
+            <input
                 type="text"
                 placeholder="Descrição"
                 className="input"
-                onChange={(e) => setPet({ ...Pet, Descricao_Pet: e.target.value })}
-                value={Pet.Descricao_Pet}
+                onChange={(e) => setDescricao_Pet(e.target.value )}
+                value={Descricao_Pet}
             />
 
             <form onSubmit={handleSubmit}>
-                <input type="text" placeholder='Nome da Imagem' value={Pet.Nome_Foto} onChange={(e) => setPet({ ...Pet, Nome_Foto: e.target.value})} />
-                
+                <input type="text" placeholder='Nome da Imagem' value={Nome_Foto} onChange={(e) => setNome_Foto(e.target.value )} />
+
                 <input type="file" accept="image/jpeg" onChange={handleFileChange} />
                 <br></br>
                 <button type="submit" className="cadastrar">
