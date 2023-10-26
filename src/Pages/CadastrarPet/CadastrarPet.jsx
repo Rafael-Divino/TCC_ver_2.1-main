@@ -228,7 +228,7 @@ const CadastroAnimal = () => {
             <input
                 onChange={(e) => setVacina({ ...Vacina, data_vacina: e.target.value })}
                 value={Vacina.data_vacina}
-                type="text"
+                type="date"
                 className="dropdown"
                 placeholder='Data Vacina'
             >
@@ -237,7 +237,7 @@ const CadastroAnimal = () => {
 
             <input
                 type="text"
-                placeholder="Descrição das vacinas"
+                placeholder="Tipo da vacinas"
                 className="input"
                 onChange={(e) => setVacina({ ...Vacina, descricao: e.target.value })}
                 value={Vacina.descricao}
