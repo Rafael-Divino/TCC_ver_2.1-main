@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Glory&family=Mulish:wght@600&family=Poppins:ital,wght@0,200;0,300;1,400&family=Roboto&family=Rubik:wght@300;400&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: Glory;
+    border: none;
+
+}
+
+.home {
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.box-carrousel {
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10%;
+    height: 100%;
+    width: 100%;
+    margin-left: -1%;
+
+}
+
+.custom-slider {
+    width: auto;
+}
+
+.titulo-principal {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.links-home {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-top: 2%;
+
+}
+
+.links-home button {
+    color: aliceblue;
+    background: #F9C200;
+    width: 40rem;
+    height: 5rem;
+    font-size: 2rem;
+    margin-right: 1rem;
+    font-weight: 800;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+}
+
+
+.links-home button:hover {
+    background: #FFD700;
+}
+
+
+.titulo-cards {
+    align-items: center;
+    display: flex;
+    font-size: 1.5rem;
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-bottom: 2%;
+}
+
+.cards {
+    width: 90%;
+    margin-left: 5%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 1%;
+    margin-top: 3%;
+}
+
+.cards .card {
+    width: 100%;
+}
+
+.cards .card-content {
+    width: 15rem;
+    margin: 0 auto;
+}

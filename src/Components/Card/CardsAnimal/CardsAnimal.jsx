@@ -1,27 +1,31 @@
+import React from 'react';
+import PropTypes from 'prop-types'; // Importe PropTypes
+import '../CardsAnimal/CardsAnimais.css';
 
-
-import { useNavigate } from "react-router-dom";
-
-function Card({ card }) {
-
-    const navigate = useNavigate();
-    function navegarEditar() {
-        navigate("/editar", { state: { id: card.id } });
+function CardsAnimal({ cardanimal }) {
+    console.log('Dados de card:', cardanimal)
+    if (!cardanimal){
+        return null;
     }
     return (
         <div>
-            <h1>{card.nome}</h1>
-            <h3>CPF: {card.cpf}</h3>
-            <h3>Email: {card.email}</h3>
-            <h3>Celular: {card.celular}</h3>
+            <div>{cardanimal.status_Pet}</div>
+            <h1>{cardanimal.nome_Pet}</h1>
+            <h3>CEP: {cardanimal.logradouro.cep}</h3>
             <label>
-                <img src={card.imagem} style={{ width: 200, height: 200 }} />
+                <img src={cardanimal.foto_Pet} style={{ width: 200, height: 200 }} alt="Imagem do Card" />
             </label>
-            <button onClick={navegarEditar}>Editar</button>
         </div>
-    )
+    );
 }
 
-export default Card;
+CardsAnimal.propTypes = {
+    cardanimal: PropTypes.shape({
+        nome_Pet: PropTypes.string.isRequired,
+        cep: PropTypes.string.isRequired,
+        foto_Pet: PropTypes.string.isRequired,
+        status_Pet: PropTypes.string.isRequired,
+    }).isRequired,
+};
 
-
+export default CardsAnimal;

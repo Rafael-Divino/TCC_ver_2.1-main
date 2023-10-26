@@ -1,12 +1,17 @@
 import { useEffect, useState } from "react";
-import './ListaDeUsuarios.css';
-// import { useNavigate } from "react-router-dom";
-import Card from '../../Components/Card/CardsAnimal/CardsAnimal'
+import { useNavigate } from 'react-router-dom';
+import CardsAnimal from '../../Components/Card/CardsAnimal/CardsAnimal'; // Importe CardsAnimal corretamente
+import Filtro from "../../Components/Filtro/Filtro";
+import '../Adote/Adote.css'
+import axios from "axios";
 
-function ListaAnimais() {
-    // const navigate = useNavigate();
-    useEffect(() => {
-        fetch("https://localhost:44340/api/usuario", {
+function Adote() {
+
+    const navigate = useNavigate();
+    const [animais, setAnimais] = useState([]);
+
+    /*useEffect(() => {
+        fetch("https://petfeliz.azurewebsites.net/api/PetFeliz/ListarPet", {
             method: "GET",
         })
             .then((response) => response.json())
@@ -15,34 +20,41 @@ function ListaAnimais() {
             })
             .catch((error) => {
                 console.log(error);
-                alert("Erro ao buscar usuários");
+                alert("Erro ao buscar os animais");
             });
+    }, []);*/
+
+    async function ListarPets() {
+        try {
+            const response = await axios.get('https://petfeliz.azurewebsites.net/api/PetFeliz/ListarPet');
+            const json = response.data;
+            setAnimais(json);
+            if(response.status === 200){
+                navigate("");
+            }
+        }
+        catch{}
+    }
+
+    useEffect(() => {
+        ListarPets();
     }, []);
 
-    const [animais, setAnimais] = useState([]);
-
-    // function mudarDePagina() {
-    //     navigate("/cadastrar");
-    // }
-
     return (
-
-
-
-      
-        <div>
-            <div className="card-container">
+        <div className="body-adote">
+            <div className="filtro-adote">
+                <Filtro />
+            </div>
+            <div className="listar-cards-adote">
+                {console.log('Array de Animais:', animais)}
                 {
-                    animais.map((card, index) => (
-                        <Card usuario={card} key={index} />
+                    animais.map((animal, index) => (
+                        <CardsAnimal cardanimal={animal} key={index} />
                     ))
                 }
             </div>
-            {/* <button onClick={mudarDePagina}>Adicionar usuário</button> */}
         </div>
-
     )
 }
 
-export default ListaAnimais;
-
+export default Adote;
