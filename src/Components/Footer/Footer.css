@@ -1,8 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Glory&family=Mulish:wght@600&family=Poppins:ital,wght@0,200;0,300;1,400&family=Roboto&family=Rubik:wght@300;400&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  outline: none;
+  font-family: Glory;
+}
+
+
+
 .box {
   height: 20rem;
   width: 100%;
   margin-top: 10%;
   display: flex;
+  font-family: Glory;
+
 }
 
 .box .footer-logado {
@@ -38,7 +51,6 @@
 
 .box .grouptitle1 {
   color: #5a3232;
-  font-family: "Glory-Bold", Helvetica;
   font-size: 28px;
   font-weight: 700;
   left: 0.5rem;
@@ -51,7 +63,6 @@
 
 .box .grouplink1 {
   color: #5a3232;
-  font-family: "Glory-Bold", Helvetica;
   font-size: 20px;
   font-weight: 700;
   left: 0.5rem;
@@ -65,7 +76,6 @@
 
 .box .grouplink2 {
   color: #5a3232;
-  font-family: "Glory-Bold", Helvetica;
   font-size: 20px;
   font-weight: 700;
   left: 0.5rem;
@@ -78,7 +88,6 @@
 
 .box .grouplink3 {
   color: #5a3232;
-  font-family: "Glory-Bold", Helvetica;
   font-size: 20px;
   font-weight: 700;
   left: 0.5rem;
@@ -102,7 +111,6 @@
 
 .box .grouptitle2 {
   color: #5a3232;
-  font-family: "Glory-Bold", Helvetica;
   font-size: 28px;
   font-weight: 700;
   left: 0.5rem;

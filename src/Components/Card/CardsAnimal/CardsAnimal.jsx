@@ -11,6 +11,9 @@ function CardsAnimal({ cardanimal }) {
         <div>
             <div>{cardanimal.status_Pet}</div>
             <h1>{cardanimal.nome_Pet}</h1>
+            <h3>{cardanimal.animal.nome_Animal}</h3>
+            <h3>{cardanimal.porte_Pet}</h3>
+            <h3>{cardanimal.sexo_Pet}</h3>
             <h3>CEP: {cardanimal.logradouro.cep}</h3>
             <label>
                 <img src={cardanimal.foto_Pet} style={{ width: 200, height: 200 }} alt="Imagem do Card" />

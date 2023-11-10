@@ -16,6 +16,12 @@ function Cadastro() {
       NomeLog: '',
       Numero: '',
     },
+    Cidade: {
+      Nome_Cidade: ''
+    },
+    Estado: {
+      Nome_Estado: ''
+    }
   });
 
   const handleInputChange = (evento) => {
@@ -32,6 +38,28 @@ function Cadastro() {
       ...prevUsuario,
       Logradouro: {
         ...prevUsuario.Logradouro,
+        [name]: value,
+      },
+    }));
+  };
+
+  const handleCidadeInputChange = (evento) => {
+    const { name, value } = evento.target;
+    setUsuario((prevUsuario) => ({
+      ...prevUsuario,
+      Cidade: {
+        ...prevUsuario.Cidade,
+        [name]: value,
+      },
+    }));
+  };
+
+  const handleEstadoInputChange = (evento) => {
+    const { name, value } = evento.target;
+    setUsuario((prevUsuario) => ({
+      ...prevUsuario,
+      Estado: {
+        ...prevUsuario.Estado,
         [name]: value,
       },
     }));
@@ -74,7 +102,7 @@ function Cadastro() {
         alert("Preencha o campo numero");
         return;
       }
-      const response = await axios.post("https://petfeliz.azurewebsites.net/api/Usuario/cadastrarUsuario", usuario);
+      const response = await axios.post("https://localhost:44302/api/Usuario/cadastrarUsuario", usuario);
       console.log("Cadastro bem-sucedido:", response.data);
 
       setUsuario({
@@ -88,6 +116,12 @@ function Cadastro() {
           NomeLog: '',
           Numero: '',
         },
+        Cidade: {
+          Nome_Cidade: ''
+        },
+        Estado: {
+          Nome_Estado: ''
+        }
       });
       alert("Usuario cadastrado com sucesso")
       window.location.reload();
@@ -119,7 +153,9 @@ function Cadastro() {
           <input type="text" id="cpf" name="CPF" value={usuario.CPF} onChange={handleInputChange} placeholder="CPF" />
           <input type="text" id="endereco" name="CEP" value={usuario.Logradouro.CEP} onChange={handleLogradouroInputChange} placeholder="CEP"
           />
-          <input type="text" id="estado" name="NomeLog" value={usuario.Logradouro.NomeLog} onChange={handleLogradouroInputChange} placeholder="Endereço" />
+          <input type="text" id="estado" name="Nome_Estado" value={usuario.Estado.Nome_Estado} onChange={handleEstadoInputChange} placeholder="Estado"/>
+          <input type="text" id="cidade" name="Nome_Cidade" value={usuario.Cidade.Nome_Cidade} onChange={handleCidadeInputChange} placeholder="Cidade"/>
+          <input type="text" id="endereco" name="NomeLog" value={usuario.Logradouro.NomeLog} onChange={handleLogradouroInputChange} placeholder="Endereço" />
           <input type="text" id="cidade" name="Numero" value={usuario.Logradouro.Numero} onChange={handleLogradouroInputChange} placeholder="Numero" />
         </div>
         <div >

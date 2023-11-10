@@ -19,6 +19,12 @@ function LoginUsu() {
       NomeLog: '',
       Numero: '',
     },
+    Cidade: {
+      Nome_Cidade: ''
+    },
+    Estado: {
+      Nome_Estado: ''
+    }
   });
 
   const [mensagem, setMensagem] = useState('');
@@ -40,9 +46,9 @@ function LoginUsu() {
         setMensagem('Preencha ambos os campos.');
         return;
       }
-      const response = await axios.post("https://petfeliz.azurewebsites.net/api/Usuario/login", usuario);
+      const response = await axios.post("https://localhost:44302/api/Auth/Login", usuario);
       if (response.status === 200) {
-        navigate("/alterarPerfil")
+        navigate("/alterarPerfil", {state: {Id: usuario.Id}})
       } else {
         setMensagem('Usuário ou senha incorretos.');
       }

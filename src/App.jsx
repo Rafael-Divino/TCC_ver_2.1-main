@@ -14,7 +14,7 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Adote/>,
+      element: <Cadastro/>,
     },
     {
       path: "/alterarPerfil",
