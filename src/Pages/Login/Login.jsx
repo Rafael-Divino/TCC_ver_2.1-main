@@ -3,6 +3,7 @@ import img1 from '../../assets/logingatinho.jpeg'; // Import the image correctly
 import '../Login/Login.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { AuthContextFunctions } from "../../AuthContext";
 
 function LoginUsu() {
   // You might want to add a function to handle form submission
@@ -46,9 +47,12 @@ function LoginUsu() {
         setMensagem('Preencha ambos os campos.');
         return;
       }
-      const response = await axios.post("https://localhost:44302/api/Auth/Login", usuario);
+      const response = await axios.post("https://petfeliz.azurewebsites.net/api/Auth/Login", usuario);
       if (response.status === 200) {
-        navigate("/alterarPerfil", {state: {Id: usuario.Id}})
+        debugger;
+        AuthContextFunctions.SaveJWT(response.data.token)
+        const user = AuthContextFunctions.GetUserData();
+        navigate("/alterarPerfil", { state: { id: user.Cod_Usuario } })
       } else {
         setMensagem('Usuário ou senha incorretos.');
       }

@@ -2,12 +2,13 @@ import { useLocation } from "react-router-dom"
 import FileUpload from "../../Components/UploadFiles/UploadFiles"
 import "../AlterarPerfil/AlterarPerfil.css"
 import { useEffect, useState } from "react";
+import { AuthContextFunctions } from "../../AuthContext";
 
 
 export default function AlterarPerfil() {
 
     const location = useLocation();
-    const id = location.state.id;
+    const id = location.state && location.state.id;
 
     const [Nome, setNome] = useState();
     const [Telefone, setTelefone] = useState();
@@ -21,13 +22,19 @@ export default function AlterarPerfil() {
         NomeLog: '',
     });
 
+    const user = AuthContextFunctions.GetUserData();
+        alert(user.Cod_Usuario);
+        alert(user.Nome_Usuario);
+
     useEffect(() => {
-        if (location.state && location.state.id){
-            fetch("http://localhost:44302/api/Usuario/" + location.state.id, {
+        debugger
+        if (location.state){
+            fetch("https://petfeliz.azurewebsites.net/api/Usuario/" + id ,{
             method: "GET",
         })
             .then((response) => response.json())
             .then((usuario) => {
+                debugger
                 console.log(usuario);
                 setNome(usuario.Nome);
                 setTelefone(usuario.Telefone);
@@ -56,8 +63,8 @@ export default function AlterarPerfil() {
                 </div>
 
                 <form className="alterar-perfil-form ">
-                    <input type="text" id="name" value={Nome} onChange={(e) => setNome(e.target.value)} name="name" placeholder="Nome" />
-                    <input type="tel" id="tel" value={Telefone} onChange={(e) => setTelefone(e.target.value)} name="tel" placeholder="Telefone" />
+                    <input type="text" id="name" value={user.Nome_Usuario} onChange={(e) => setNome(e.target.value)} name="name" placeholder="Nome" />
+                    <input type="tel" id="tel" value={user.Telefone} onChange={(e) => setTelefone(e.target.value)} name="tel" placeholder="Telefone" />
                     <input type="text" id="estado" value={Estado.Nome_Estado} onChange={(e) => setEstado({ ...Estado, Nome_Estado: e.target.value})} name="estado" placeholder="Estado" />
                     <input type="text" id="cidade" value={Cidade.Nome_Cidade} onChange={(e) => setCidade({ ...Cidade, Nome_Cidade: e.target.value})} name="cidade" placeholder="Cidade" />
                     <input type="endereco" id="endereco" value={Logradouro.NomeLog} onChange={(e) => setLogradouro({ ...Logradouro, NomeLog: e.target.value})} name="endereco" placeholder="Endereço" />
