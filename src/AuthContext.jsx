@@ -8,7 +8,7 @@ function SaveJWT(jwtData) {
 }
 
 function GetUserData() {
-    return JSON.parse(localStorage.getItem("userData"));
+    return (localStorage.getItem("userData"));
 }
 
 function GenerateHeader() {
@@ -18,7 +18,7 @@ function GenerateHeader() {
         Navegar('Login')
     }
 
-    const token = JSON.parse(localStorage.getItem("jwt"));
+    const token = (localStorage.getItem("jwt"));
     return new Headers({
         Authorization: "Bearer " + token,
         "Content-Type": "application/json",
@@ -26,7 +26,7 @@ function GenerateHeader() {
 }
 
 function CheckUserLogin() {
-    const token = localStorage.getItem("jwt");
+    const token = (localStorage.getItem("jwt"));
     if (!token) {
       return false;
     }
@@ -36,7 +36,7 @@ function CheckUserLogin() {
   
     if (actualDate > userData.exp) {
       //usuario expirado
-      localStorage.remove("@jwt");
+      localStorage.remove("jwt");
       return false;
     }
   

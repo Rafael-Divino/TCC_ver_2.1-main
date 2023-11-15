@@ -52,7 +52,7 @@ function LoginUsu() {
         debugger;
         AuthContextFunctions.SaveJWT(response.data.token)
         const user = AuthContextFunctions.GetUserData();
-        navigate("/alterarPerfil", { state: { id: user.Cod_Usuario } })
+        navigate("/CadastroAnimal", { state: { id: user.Cod_Usuario } })
       } else {
         setMensagem('Usuário ou senha incorretos.');
       }

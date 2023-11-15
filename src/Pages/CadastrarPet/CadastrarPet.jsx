@@ -7,18 +7,6 @@ import Datetime from 'react-datetime';
 import { AuthContextFunctions } from "../../AuthContext";
 
 const CadastroAnimal = () => {
-    /*const [Pet, setPet] = useState({
-        Nome_Pet: '',
-        Sexo_Pet: 'Selecione o Sexo',
-        Descricao_Pet: '',
-        Idade_Pet: 'Selecione a Idade',
-        Porte_Pet: 'Selecione o Porte',
-        Status_Pet: 'Selecione uma opção',
-        Castrado: 'Selecione a opção',
-        Nome_Foto: '',
-        Foto_Pet: '',
-        Base64: null,
-    });*/
 
     const [Nome_Pet, setNome_Pet] = useState("");
     const [Porte_Pet, setPorte_Pet] = useState("");

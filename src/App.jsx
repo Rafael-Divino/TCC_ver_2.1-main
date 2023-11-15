@@ -23,6 +23,10 @@ function App() {
     {
       path: "/AnimaisCadastrados",
       element: <AnimaisCadastrados/>,
+    },
+    {
+      path: "/CadastroAnimal",
+      element: <CadastroAnimal/>,
     }
   ])
   return <RouterProvider router={router}/>;
