@@ -17,10 +17,10 @@ export default function AlterarPerfil() {
   const [Numero, setNumero] = useState("");
   const [Email, setEmail] = useState("");
   const [CPF, setCPF] = useState("");
-  const [Senha, setSenha] = useState(""); // Adicionado
+  const [Senha, setSenha] = useState("");
 
   const user = AuthContextFunctions.GetUserData();
-
+  
   useEffect(() => {
     if (location.state) {
       axios

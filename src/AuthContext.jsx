@@ -46,5 +46,6 @@ function CheckUserLogin() {
 export const AuthContextFunctions = {
     SaveJWT,
     GetUserData,
-    GenerateHeader
+    GenerateHeader,
+    CheckUserLogin
 };

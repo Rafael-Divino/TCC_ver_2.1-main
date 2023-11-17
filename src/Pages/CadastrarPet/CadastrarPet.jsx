@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './CadastroAnimal.css';
 import axios from 'axios';
 import DateTimePicker from 'react-datetime-picker';
 import Datetime from 'react-datetime';
-
+import { useLocation } from "react-router-dom";
 import { AuthContextFunctions } from "../../AuthContext";
 
 const CadastroAnimal = () => {
@@ -18,7 +18,7 @@ const CadastroAnimal = () => {
     const [Nome_Foto, setNome_Foto] = useState("");
     const [Foto_Pet, setFoto_Pet] = useState("");
     const [Base64, setBase64] = useState(null);
-
+    const [Cod_Usuario, setCod_Usuario] = useState("");
     const [Especie, setEspecie] = useState({
         Nome_Especie: '',
     })
@@ -50,6 +50,18 @@ const CadastroAnimal = () => {
         return {};
     };
 
+    useEffect(() => {
+        const usuarioLogado = AuthContextFunctions.CheckUserLogin();
+
+        if (usuarioLogado) {
+            const userData = JSON.parse(AuthContextFunctions.GetUserData());
+            const userId = userData.Cod_Usuario;
+            setCod_Usuario(userId);
+        } else {
+            alert("nenhum usuario logado")
+        }
+    }, []);
+
     function handleDateChange(date) {
         setVacina({ ...Vacina, data_vacina: date });
     }
@@ -64,7 +76,6 @@ const CadastroAnimal = () => {
                 setBase64(base64);
 
             };
-            debugger;
             reader.readAsDataURL(selectedFile);
         } else {
             setBase64(null);
@@ -79,22 +90,32 @@ const CadastroAnimal = () => {
         if (Base64) {
 
             const body = {
-                Vacina, Animal, Raca, Especie, Nome_Pet, Porte_Pet, Sexo_Pet, Idade_Pet, Descricao_Pet, Status_Pet, Castrado, Nome_Foto, Foto_Pet, Base64
+                Vacina, Animal, Raca, Especie, Nome_Pet, Porte_Pet, Sexo_Pet, Idade_Pet, Descricao_Pet, Status_Pet, Castrado, Nome_Foto, Foto_Pet, Base64, Cod_Usuario
             }
-            debugger;
+            
 
-            if (Object.keys(validationErrors).length === 0) {
-                try {
-                    const headers = AuthContextFunctions.GenerateHeader();
-                    const response = await axios.post('https://petfeliz.azurewebsites.net/api/PetFeliz/CadastrarPet', body, { headers });
+            if (!AuthContextFunctions.CheckUserLogin()) {
+                console.log("Usuário não logado. Redirecionando para a página de login.");
+                return;
+            }
 
-                    if (response.status === 200) {
-                        alert('Cadastro realizado com sucesso');
-                    }
-                } catch (error) {
-                    console.error('Erro ao fazer a solicitação:', error);
-                    alert('teste');
+            const token = AuthContextFunctions.GenerateHeader().get("Authorization");
+
+            try {
+
+                const response = await axios.post('https://petfeliz.azurewebsites.net/api/PetFeliz/CadastrarPet', body, {
+                    headers: {
+                        Authorization: token,
+                        'Content-Type': 'application/json',
+                    },
+                });
+
+                if (response.status === 200) {
+                    alert('Cadastro realizado com sucesso');
                 }
+            } catch (error) {
+                console.error('Erro ao fazer a solicitação:', error);
+                alert('teste');
             }
         }
     }
