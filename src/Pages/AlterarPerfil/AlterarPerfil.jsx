@@ -10,65 +10,78 @@ export default function AlterarPerfil() {
 
   const [Nome, setNome] = useState("");
   const [Telefone, setTelefone] = useState("");
-  const [Estado, setEstado] = useState("");
-  const [Cidade, setCidade] = useState("");
-  const [Logradouro, setLogradouro] = useState("");
-  const [CEP, setCEP] = useState("");
-  const [Numero, setNumero] = useState("");
-  const [Email, setEmail] = useState("");
-  const [CPF, setCPF] = useState("");
   const [Senha, setSenha] = useState("");
+  const [Id, setId] = useState("");
+  const [Estado, setEstado] = useState({
+    Nome_Estado: ""
+  });
+  const [Cidade, setCidade] = useState({
+    Nome_Cidade: '',
+  });
+  //const [NomeLog, setNomeLog] = useState("");
+  //const [CEP, setCEP] = useState("");
+  //const [Numero, setNumero] = useState("");
+  const [Logradouro, setLogradouro] = useState({
+    NomeLog: '',
+    CEP: '',
+    Numero: ''
+  })
 
-  const user = AuthContextFunctions.GetUserData();
-  
+
   useEffect(() => {
-    if (location.state) {
-      axios
-        .get(`https://petfeliz.azurewebsites.net/api/Usuario/${id}`)
-        .then((response) => {
-          const usuario = response.data;
-          setNome(usuario.Nome);
-          setTelefone(usuario.Telefone);
+    const usuarioLogado = AuthContextFunctions.CheckUserLogin();
 
-          if (usuario.Estado) {
-            setEstado(usuario.Estado.Nome_Estado);
-          }
+    if (usuarioLogado) {
+      const userData = JSON.parse(AuthContextFunctions.GetUserData());
 
-          if (usuario.Cidade) {
-            setCidade(usuario.Cidade.Nome_Cidade);
-          }
+      const userNome = userData.Nome_Usuario;
+      setNome(userNome);
 
-          setLogradouro(usuario.Logradouro.NomeLog);
-          setCEP(usuario.Logradouro.CEP);
-          setNumero(usuario.Logradouro.Numero);
-          setEmail(usuario.Email);
-          setCPF(usuario.CPF);
-        })
-        .catch((error) => {
-          console.error("Erro ao buscar os dados do usuário", error);
-        });
+      const userTelefone = userData.Telefone;
+      setTelefone(userTelefone);
+
+      const usercidade = userData.Nome_Cidade;
+      setCidade({ ...Cidade, Nome_Cidade: usercidade});
+
+      const userestado = userData.Nome_Estado;
+      setEstado({ ...Estado, Nome_Estado: userestado});
+
+      const userNomeLog = userData.Nome_Log;
+      setLogradouro({ ...Logradouro, NomeLog: userNomeLog});
+
+      const userCep = userData.CEP;
+      setLogradouro({ ...Logradouro, NomeLog: userCep});
+
+      const userNumero = userData.Numero_Log;
+      setLogradouro({ ...Logradouro, NomeLog: userNumero});
+      
+      const userId = userData.Cod_Usuario;
+      setId(userId)
     } else {
-      alert("Ocorreu um erro!");
+      alert("nenhum usuario logado")
     }
-  }, [location.state, id]);
+
+  }, []);
 
   const editarUsuario = async (e) => {
     e.preventDefault();
-
+    
     const body = {
-      id,
+      Id,
       Nome,
       Telefone,
-      Estado: { Nome_Estado: Estado },
-      Cidade: { Nome_Cidade: Cidade },
-      Logradouro: { NomeLog: Logradouro, CEP, Numero },
-      Email,
-      CPF,
+      Estado,
+      Cidade,
+      Logradouro,
       Senha,
     };
 
     try {
-      await axios.put("https://localhost:44302/api/Usuario/atualizarUsuario", body);
+      await axios.put("https://localhost:44302/api/Usuario/atualizarUsuario", body, {
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
       alert("Usuário alterado com sucesso");
     } catch (error) {
       console.error("Erro ao alterar o usuário", error);
@@ -99,37 +112,27 @@ export default function AlterarPerfil() {
 
           <div className="form-group">
             <label htmlFor="estado">Estado:</label>
-            <input type="text" id="estado" value={Estado} onChange={(e) => setEstado(e.target.value)} name="estado" placeholder="Estado" />
+            <input type="text" id="estado" value={Estado.Nome_Estado} onChange={(e) => setEstado({ ...Estado, Nome_Estado: e.target.value})} name="estado" placeholder="Estado" />
           </div>
 
           <div className="form-group">
             <label htmlFor="cidade">Cidade:</label>
-            <input type="text" id="cidade" value={Cidade} onChange={(e) => setCidade(e.target.value)} name="cidade" placeholder="Cidade" />
+            <input type="text" id="cidade" value={Cidade.Nome_Cidade} onChange={(e) => setCidade({ ...Cidade, Nome_Cidade: e.target.value})} name="cidade" placeholder="Cidade" />
           </div>
 
           <div className="form-group">
             <label htmlFor="endereco">Endereço:</label>
-            <input type="text" id="endereco" value={Logradouro} onChange={(e) => setLogradouro(e.target.value)} name="endereco" placeholder="Endereço" />
+            <input type="text" id="endereco" value={Logradouro.NomeLog} onChange={(e) => setLogradouro({ ...Logradouro, NomeLog: e.target.value})} name="endereco" placeholder="Endereço" />
           </div>
 
           <div className="form-group">
             <label htmlFor="cep">CEP:</label>
-            <input type="text" id="cep" value={CEP} onChange={(e) => setCEP(e.target.value)} name="cep" placeholder="CEP" />
+            <input type="text" id="cep" value={Logradouro.CEP} onChange={(e) => setLogradouro({ ...Logradouro, CEP: e.target.value})} name="cep" placeholder="CEP" />
           </div>
 
           <div className="form-group">
             <label htmlFor="numero">Número:</label>
-            <input type="text" id="numero" value={Numero} onChange={(e) => setNumero(e.target.value)} name="numero" placeholder="Número" />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="email">Email:</label>
-            <input type="text" id="email" value={Email} onChange={(e) => setEmail(e.target.value)} name="email" placeholder="Email" />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="cpf">CPF:</label>
-            <input type="text" id="cpf" value={CPF} onChange={(e) => setCPF(e.target.value)} name="cpf" placeholder="CPF" />
+            <input type="text" id="numero" value={Logradouro.Numero} onChange={(e) => setLogradouro({ ...Logradouro, Numero: e.target.value})} name="numero" placeholder="Número" />
           </div>
 
           <div className="form-group">

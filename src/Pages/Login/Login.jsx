@@ -47,12 +47,11 @@ function LoginUsu() {
         setMensagem('Preencha ambos os campos.');
         return;
       }
-      const response = await axios.post("https://petfeliz.azurewebsites.net/api/Auth/Login", usuario);
+      const response = await axios.post("https://localhost:44302/api/Auth/Login", usuario);
       if (response.status === 200) {
-        debugger;
         AuthContextFunctions.SaveJWT(response.data.token)
         const user = AuthContextFunctions.GetUserData();
-        navigate("/CadastroAnimal", { state: { id: user.Cod_Usuario } })
+        navigate("/AlterarPerfil", { state: { id: user.Cod_Usuario } })
       } else {
         setMensagem('Usuário ou senha incorretos.');
       }
