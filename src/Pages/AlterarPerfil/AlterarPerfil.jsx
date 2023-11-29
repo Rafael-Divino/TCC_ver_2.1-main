@@ -18,14 +18,14 @@ export default function AlterarPerfil() {
   const [Cidade, setCidade] = useState({
     Nome_Cidade: '',
   });
-  //const [NomeLog, setNomeLog] = useState("");
-  //const [CEP, setCEP] = useState("");
-  //const [Numero, setNumero] = useState("");
-  const [Logradouro, setLogradouro] = useState({
+  const [NomeLog, setNomeLog] = useState("");
+  const [CEP, setCEP] = useState("");
+  const [Numero, setNumero] = useState("");
+  /*const [Logradouro, setLogradouro] = useState({
     NomeLog: '',
     CEP: '',
     Numero: ''
-  })
+  })*/
 
 
   useEffect(() => {
@@ -47,13 +47,13 @@ export default function AlterarPerfil() {
       setEstado({ ...Estado, Nome_Estado: userestado});
 
       const userNomeLog = userData.Nome_Log;
-      setLogradouro({ ...Logradouro, NomeLog: userNomeLog});
+      setNomeLog(userNomeLog);
 
       const userCep = userData.CEP;
-      setLogradouro({ ...Logradouro, NomeLog: userCep});
+      setCEP(userCep);
 
       const userNumero = userData.Numero_Log;
-      setLogradouro({ ...Logradouro, NomeLog: userNumero});
+      setNumero(userNumero);
       
       const userId = userData.Cod_Usuario;
       setId(userId)
@@ -66,6 +66,11 @@ export default function AlterarPerfil() {
   const editarUsuario = async (e) => {
     e.preventDefault();
     
+    const Logradouro = {
+      NomeLog,
+      CEP,
+      Numero
+    }
     const body = {
       Id,
       Nome,
@@ -122,17 +127,17 @@ export default function AlterarPerfil() {
 
           <div className="form-group">
             <label htmlFor="endereco">Endereço:</label>
-            <input type="text" id="endereco" value={Logradouro.NomeLog} onChange={(e) => setLogradouro({ ...Logradouro, NomeLog: e.target.value})} name="endereco" placeholder="Endereço" />
+            <input type="text" id="endereco" value={NomeLog} onChange={(e) => setNomeLog(e.target.value)} name="endereco" placeholder="Endereço" />
           </div>
 
           <div className="form-group">
             <label htmlFor="cep">CEP:</label>
-            <input type="text" id="cep" value={Logradouro.CEP} onChange={(e) => setLogradouro({ ...Logradouro, CEP: e.target.value})} name="cep" placeholder="CEP" />
+            <input type="text" id="cep" value={CEP} onChange={(e) => setCEP(e.target.value)} name="cep" placeholder="CEP" />
           </div>
 
           <div className="form-group">
             <label htmlFor="numero">Número:</label>
-            <input type="text" id="numero" value={Logradouro.Numero} onChange={(e) => setLogradouro({ ...Logradouro, Numero: e.target.value})} name="numero" placeholder="Número" />
+            <input type="text" id="numero" value={Numero} onChange={(e) => setNumero(e.target.value)} name="numero" placeholder="Número" />
           </div>
 
           <div className="form-group">

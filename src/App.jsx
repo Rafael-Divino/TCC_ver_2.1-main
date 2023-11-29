@@ -27,6 +27,10 @@ function App() {
     {
       path: "/CadastroAnimal",
       element: <CadastroAnimal/>,
+    },
+    {
+      path: "/Adote",
+      element: <Adote/>
     }
   ])
   return <RouterProvider router={router}/>;

@@ -51,7 +51,7 @@ function LoginUsu() {
       if (response.status === 200) {
         AuthContextFunctions.SaveJWT(response.data.token)
         const user = AuthContextFunctions.GetUserData();
-        navigate("/AlterarPerfil", { state: { id: user.Cod_Usuario } })
+        navigate("/alterarPerfil", { state: { id: user.Cod_Usuario } })
       } else {
         setMensagem('Usuário ou senha incorretos.');
       }
